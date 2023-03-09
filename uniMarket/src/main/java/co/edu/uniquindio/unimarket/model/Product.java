@@ -32,7 +32,7 @@ public class Product implements Serializable
     @Column(name = "limitedDate", nullable = false)
     private Date limitedDate;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "description", nullable = false)
     private String description;
 
     @Column(name = "state", nullable = false)
