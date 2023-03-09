@@ -2,6 +2,7 @@ package co.edu.uniquindio.unimarket.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -17,4 +18,7 @@ public class User extends Person implements Serializable
     private int idCard;
 
     private Date creationDate;
+
+    @ManyToOne
+    private Address address;
 }
