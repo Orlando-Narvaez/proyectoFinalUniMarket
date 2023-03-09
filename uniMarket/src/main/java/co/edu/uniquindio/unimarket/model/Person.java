@@ -1,15 +1,13 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
-@Entity
+@MappedSuperclass
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,6 +35,9 @@ public class Person implements Serializable
 
     @Column(name = "numPhone",nullable = false, length = 20, unique = true)
     private String numPhone;
+
+    @Column(name = "userName",nullable = false, length = 20, unique = true)
+    private String userName;
 
     @Column(name = "email",nullable = false, length = 40, unique = true)
     private String email;
