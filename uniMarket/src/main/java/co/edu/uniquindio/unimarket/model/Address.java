@@ -3,9 +3,11 @@ package co.edu.uniquindio.unimarket.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,4 +26,7 @@ public class Address implements Serializable
 
     @Column(name = "postalCode",nullable = false, length = 20)
     private String postalCode;
+
+    @OneToMany(mappedBy = "Address")
+    private List<User> persons;
 }
