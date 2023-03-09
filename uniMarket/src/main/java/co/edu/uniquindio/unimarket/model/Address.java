@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -19,7 +16,7 @@ public class Address implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    private int address;
+    private String address;
 
     @Column(name = "name",nullable = false, length = 20)
     private String name;
@@ -27,6 +24,6 @@ public class Address implements Serializable
     @Column(name = "postalCode",nullable = false, length = 20)
     private String postalCode;
 
-    @OneToMany(mappedBy = "Address")
+    @OneToMany(mappedBy = "address")
     private List<User> persons;
 }
