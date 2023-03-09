@@ -18,8 +18,7 @@ public class Product implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(name = "idProduct", length = 20)
-    private String idProduct;
+    private int idProduct;
 
     @Column(name = "name", nullable = false, length = 20)
     private String name;
