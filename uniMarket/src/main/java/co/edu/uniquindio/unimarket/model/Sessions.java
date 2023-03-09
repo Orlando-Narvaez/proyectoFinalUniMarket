@@ -19,10 +19,11 @@ public class Sessions implements Serializable
     @Id
     @EqualsAndHashCode.Include
     @Column(name = "idSessions",nullable = false, length = 20)
-    private String idSessions;
-    private Date startDate;
-    private Date endingDate;
+    private int idSessions;
 
-    @Column(name = "idUser",nullable = false, length = 20)
-    private String idUser;
+    @Column(name = "startDate", nullable = false)
+    private Date startDate;
+
+    @Column(name = "endingDate", nullable = false)
+    private Date endingDate;
 }
