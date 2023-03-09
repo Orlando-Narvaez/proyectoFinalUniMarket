@@ -1,15 +1,27 @@
 package co.edu.uniquindio.unimarket.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.*;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Guarantee
+@Entity
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Guarantee implements Serializable
 {
-    private String idGuarantee;
-    private Date dataRequest;
-    private Date dateDeliver;
-    private String idUser;
-    private String idProduct;
+    @Id
+    @EqualsAndHashCode.Include
+    private int idGuarantee;
 
-    public Guarantee() {
-    }
+    @Column(name = "dataRequest", nullable = false)
+    private Date dataRequest;
+
+    @Column(name = "dateDeliver", nullable = false)
+    private Date dateDeliver;
 }
