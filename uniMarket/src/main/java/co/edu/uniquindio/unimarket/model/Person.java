@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 @MappedSuperclass
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -18,7 +16,6 @@ public class Person implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(name = "idCard",nullable = false)
     private int idCard;
 
     @Column(name = "name1",nullable = false, length = 20)
@@ -32,8 +29,6 @@ public class Person implements Serializable
 
     @Column(name = "lastName2",nullable = false, length = 20)
     private String LastName2;
-
-    @Column(name = "birthDate",nullable = false)
     private Date birthDate;
 
     @Column(name = "numPhone",nullable = false, length = 20, unique = true)
