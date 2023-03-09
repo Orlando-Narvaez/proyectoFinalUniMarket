@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @MappedSuperclass
@@ -31,6 +32,8 @@ public class Person implements Serializable
 
     @Column(name = "lastName2",nullable = false, length = 20)
     private String LastName2;
+
+    @Column(name = "birthDate",nullable = false)
     private Date birthDate;
 
     @Column(name = "numPhone",nullable = false, length = 20, unique = true)
@@ -44,7 +47,4 @@ public class Person implements Serializable
 
     @Column(name = "password",nullable = false, length = 20)
     private String password;
-
-    @ElementCollection
-    private Map<String, String> address;
 }
