@@ -1,8 +1,27 @@
 package co.edu.uniquindio.unimarket.model;
 
-public class Address
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.*;
+
+import java.io.Serializable;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Address implements Serializable
 {
-    private String address;
+    @Id
+    @EqualsAndHashCode.Include
+    private int address;
+
+    @Column(name = "name",nullable = false, length = 20)
     private String name;
+
+    @Column(name = "postalCode",nullable = false, length = 20)
     private String postalCode;
 }
