@@ -17,6 +17,7 @@ public class User extends Person implements Serializable
     @Column(name = "idCard",nullable = false)
     private int idCard;
 
+    @Column(name = "creationDate",nullable = false)
     private Date creationDate;
 
     @ManyToOne
