@@ -12,18 +12,10 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class User implements Serializable
+public class User extends Person implements Serializable
 {
-    @Id
-    @EqualsAndHashCode.Include
-    @Column(name = "idUser",nullable = false, length = 20)
-    private String idUser;
-    private Date creationDate;
-
-    @Column(name = "userName",nullable = false, length = 20, unique = true)
-    private String userName;
-
     @Column(name = "idCard",nullable = false, length = 20)
     private String idCard;
+
+    private Date creationDate;
 }
