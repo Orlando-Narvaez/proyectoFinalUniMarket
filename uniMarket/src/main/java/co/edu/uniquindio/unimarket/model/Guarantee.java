@@ -24,4 +24,8 @@ public class Guarantee implements Serializable
 
     @Column(name = "dateDeliver", nullable = false)
     private Date dateDeliver;
+
+    @Column(name = "describe", nullable = false, length = 100)
+    private String describe;
+
 }
