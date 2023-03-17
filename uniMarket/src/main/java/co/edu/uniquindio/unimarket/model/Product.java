@@ -37,4 +37,7 @@ public class Product implements Serializable
 
     @Column(name = "state", nullable = false)
     private Boolean state;
+
+    @Column(name = "amount", nullable = false)
+    private int amount;
 }
