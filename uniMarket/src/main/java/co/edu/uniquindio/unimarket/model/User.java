@@ -20,6 +20,4 @@ public class User extends Person implements Serializable
     @Column(name = "creationDate",nullable = false)
     private Date creationDate;
 
-    @ManyToOne
-    private Address address;
 }
