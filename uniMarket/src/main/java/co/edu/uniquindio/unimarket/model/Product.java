@@ -1,12 +1,13 @@
 package co.edu.uniquindio.unimarket.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
-
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -24,13 +25,13 @@ public class Product implements Serializable
     private String name;
 
     @Column(name = "value", nullable = false)
-    private float value;
+    private double value;
 
     @Column(name = "publicationDate", nullable = false)
-    private Date publicationDate;
+    private LocalDateTime publicationDate;
 
     @Column(name = "limitedDate", nullable = false)
-    private Date limitedDate;
+    private LocalDateTime limitedDate;
 
     @Column(name = "description", nullable = false)
     private String description;
@@ -40,4 +41,8 @@ public class Product implements Serializable
 
     @Column(name = "amount", nullable = false)
     private int amount;
+
+    @ElementCollection
+    @ToString.Exclude
+    private Map<String, String> images;
 }
