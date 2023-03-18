@@ -1,11 +1,10 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,4 +24,7 @@ public class Sessions implements Serializable
 
     @Column(name = "endingDate", nullable = false)
     private LocalDateTime endingDate;
+
+    @ManyToOne
+    private User user;
 }
