@@ -4,9 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
-
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -24,5 +23,5 @@ public class Trademark implements Serializable
     private String name;
 
     @Column(name = "model", nullable = false)
-    private Date model;
+    private LocalDateTime model;
 }
