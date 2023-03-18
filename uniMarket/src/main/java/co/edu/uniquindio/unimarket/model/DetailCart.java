@@ -1,10 +1,9 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,10 +15,7 @@ public class DetailCart implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    private int idCart;
-
-    @Column(name = "idProduct", nullable = false)
-    private int idProduct;
+    private int id;
 
     @Column(name = "value", nullable = false)
     private double value;
@@ -32,4 +28,10 @@ public class DetailCart implements Serializable
 
     @Column(name = "valueTotal", nullable = false)
     private double valueTotal;
+
+    @ManyToOne
+    private Cart cart;
+
+    @ManyToOne
+    private Product product;
 }
