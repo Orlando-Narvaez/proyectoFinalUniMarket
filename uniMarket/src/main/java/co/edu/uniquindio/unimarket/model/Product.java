@@ -1,12 +1,12 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+
+import javax.crypto.Mac;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @Entity
@@ -45,4 +45,8 @@ public class Product implements Serializable
     @ElementCollection
     @ToString.Exclude
     private Map<String, String> images;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "product")
+    private List<DetailCart> detailCartList;
 }
