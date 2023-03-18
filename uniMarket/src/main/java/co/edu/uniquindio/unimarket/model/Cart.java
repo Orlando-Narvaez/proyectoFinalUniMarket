@@ -1,11 +1,10 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -31,4 +30,11 @@ public class Cart implements Serializable
 
     @Column(name = "totalValue", nullable = false)
     private double totalValue;
+
+    @ManyToOne
+    private User user;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "cart")
+    private List<DetailCart> detailCartList;
 }
