@@ -1,11 +1,13 @@
 package co.edu.uniquindio.unimarket.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -20,12 +22,15 @@ public class Guarantee implements Serializable
     private int idGuarantee;
 
     @Column(name = "dataRequest", nullable = false)
-    private Date dataRequest;
+    private LocalDateTime dataRequest;
 
     @Column(name = "dateDeliver", nullable = false)
-    private Date dateDeliver;
+    private LocalDateTime dateDeliver;
 
     @Column(name = "describe", nullable = false, length = 100)
     private String describe;
 
+    @ElementCollection
+    @ToString.Exclude
+    private Map<String, String> images;
 }
