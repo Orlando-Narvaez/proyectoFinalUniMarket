@@ -4,9 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
-
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -18,16 +17,16 @@ public class Cart implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(name = "idCart",nullable = false, length = 20)
+    @Column(name = "idCart", nullable = false, length = 20)
     private int idCart;
 
     @Column(name = "startDate", nullable = false)
-    private Date startDate;
+    private LocalDateTime startDate;
 
     @Column(name = "endingDate", nullable = false)
-    private Date endingDate;
+    private LocalDateTime endingDate;
 
-    @Column(name = "idUser",nullable = false, length = 20)
+    @Column(name = "idUser", nullable = false, length = 20)
     private String idUser;
 
     @Column(name = "totalValue", nullable = false)
