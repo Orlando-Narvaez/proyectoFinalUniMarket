@@ -1,11 +1,10 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -28,4 +27,10 @@ public class PQR implements Serializable
 
     @Column(name = "dateRequest", nullable = false)
     private LocalDateTime dateRequest;
+
+    @ManyToOne
+    private User user;
+
+    @ManyToOne
+    private Moderator moderator;
 }
