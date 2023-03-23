@@ -34,4 +34,8 @@ public class DetailCart implements Serializable
 
     @ManyToOne
     private Product product;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "detailCart")
+    private List<Guarantee> guaranteeList;
 }
