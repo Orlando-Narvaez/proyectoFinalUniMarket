@@ -5,7 +5,6 @@ import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -15,7 +14,6 @@ public class User extends Person implements Serializable
 {
     @Column(name = "idCard", nullable = false)
     private int idCard;
-
     @Column(name = "creationDate",nullable = false)
     private LocalDateTime creationDate;
 
@@ -26,11 +24,9 @@ public class User extends Person implements Serializable
     @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<Sessions> sessionsList;
-
     @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<PQR> pqrList;
-
     @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<Cart> cartList;
@@ -42,4 +38,8 @@ public class User extends Person implements Serializable
     @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<Comments> commentsList;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user")
+    private List<Product> productPublicationList;
 }
