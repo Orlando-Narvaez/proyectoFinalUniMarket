@@ -58,6 +58,10 @@ public class Product implements Serializable
     private List<DetailCart> detailCartList;
 
     @ToString.Exclude
+    @ManyToOne
+    private Trademark trademark;
+
+    @ToString.Exclude
     @OneToMany(mappedBy = "product")
     private List<Comments> commentsList;
 
