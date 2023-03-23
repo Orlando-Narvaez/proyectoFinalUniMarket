@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
@@ -25,6 +24,7 @@ public class Sessions implements Serializable
     @Column(name = "endingDate", nullable = false)
     private LocalDateTime endingDate;
 
+    @ToString.Exclude
     @ManyToOne
     private User user;
 }
