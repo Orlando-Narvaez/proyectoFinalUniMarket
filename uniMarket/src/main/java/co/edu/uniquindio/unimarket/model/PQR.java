@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 @Getter
@@ -28,9 +27,11 @@ public class PQR implements Serializable
     @Column(name = "dateRequest", nullable = false)
     private LocalDateTime dateRequest;
 
+    @ToString.Exclude
     @ManyToOne
     private User user;
 
+    @ToString.Exclude
     @ManyToOne
     private Moderator moderator;
 }
