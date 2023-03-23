@@ -1,12 +1,12 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.*;
+import org.apache.catalina.LifecycleState;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -20,8 +20,15 @@ public class PublicationState implements Serializable
     @EqualsAndHashCode.Include
     private int id;
 
-    @Column(name = "state", nullable = false)
-    private boolean state;
+    @Column(name = "reason", length = 100)
+    private String reason;
+
+    @Column(name = "date", nullable = false)
+    private LocalDateTime date;
+
+    @ElementCollection
+    @ToString.Exclude
+    private List<State> stateList;
 
     @ToString.Exclude
     @ManyToOne
