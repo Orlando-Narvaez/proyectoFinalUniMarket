@@ -23,9 +23,11 @@ public class PublicationState implements Serializable
     @Column(name = "state", nullable = false)
     private boolean state;
 
+    @ToString.Exclude
     @ManyToOne
     private Moderator moderator;
 
+    @ToString.Exclude
     @ManyToOne
     private Product product;
 }
