@@ -16,7 +16,6 @@ public class Cart implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
-    @Column(name = "idCart", nullable = false, length = 20)
     private int idCart;
 
     @Column(name = "startDate", nullable = false)
