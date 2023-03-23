@@ -3,7 +3,6 @@ package co.edu.uniquindio.unimarket.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import javax.crypto.Mac;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -46,7 +45,23 @@ public class Product implements Serializable
     @ToString.Exclude
     private Map<String, String> images;
 
+    @ElementCollection
+    @ToString.Exclude
+    private List<Categories> categoriesList;
+
+    @ToString.Exclude
+    @ManyToMany(mappedBy = "productList")
+    private List<User> userList;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "product")
     private List<DetailCart> detailCartList;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "product")
+    private List<Comments> commentsList;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "product")
+    private List<PublicationState> publicationStateList;
 }
