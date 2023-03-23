@@ -9,8 +9,8 @@ import java.util.Map;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
+@ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Guarantee implements Serializable
 {
@@ -18,14 +18,18 @@ public class Guarantee implements Serializable
     @EqualsAndHashCode.Include
     private int idGuarantee;
 
+    @Column(name = "describeGuarantee", nullable = false, length = 200)
+    private String describeGuarantee;
+
     @Column(name = "dataRequest", nullable = false)
     private LocalDateTime dataRequest;
 
     @Column(name = "dateDeliver", nullable = false)
     private LocalDateTime dateDeliver;
 
-    @Column(name = "describe", nullable = false, length = 100)
-    private String describe;
+    @ElementCollection
+    @ToString.Exclude
+    private Map<String, String> images;
 
     @ToString.Exclude
     @ManyToOne
@@ -34,8 +38,4 @@ public class Guarantee implements Serializable
     @ToString.Exclude
     @ManyToOne
     private User user;
-
-    @ElementCollection
-    @ToString.Exclude
-    private Map<String, String> images;
 }
