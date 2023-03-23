@@ -1,9 +1,6 @@
 package co.edu.uniquindio.unimarket.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -29,6 +26,14 @@ public class Guarantee implements Serializable
 
     @Column(name = "describe", nullable = false, length = 100)
     private String describe;
+
+    @ToString.Exclude
+    @ManyToOne
+    private DetailCart detailCart;
+
+    @ToString.Exclude
+    @ManyToOne
+    private User user;
 
     @ElementCollection
     @ToString.Exclude
