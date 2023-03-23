@@ -31,6 +31,7 @@ public class Cart implements Serializable
     @Column(name = "totalValue", nullable = false)
     private double totalValue;
 
+    @ToString.Exclude
     @ManyToOne
     private User user;
 
