@@ -3,9 +3,11 @@ package co.edu.uniquindio.unimarket.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,4 +26,8 @@ public class Trademark implements Serializable
 
     @Column(name = "model", nullable = false)
     private LocalDateTime model;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "trademark")
+    private List<Product> productList;
 }
