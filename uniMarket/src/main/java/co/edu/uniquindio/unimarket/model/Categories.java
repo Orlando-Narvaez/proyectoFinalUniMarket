@@ -1,6 +1,6 @@
 package co.edu.uniquindio.unimarket.model;
 
-enum Categories
+public enum Categories
 {
     Electrodomesticos,
     Tecnologia,
