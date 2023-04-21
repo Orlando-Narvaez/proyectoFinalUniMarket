@@ -15,12 +15,12 @@ public class DetailCart implements Serializable
     @EqualsAndHashCode.Include
     private int id;
     @Column(name = "value", nullable = false)
-    private double value;
+    private float value;
 
     @Column(name = "amount", nullable = false)
     private int amount;
     @Column(name = "valueTotal", nullable = false)
-    private double valueTotal;
+    private float valueTotal;
     @ManyToOne
     private Cart cart;
 
