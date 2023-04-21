@@ -30,6 +30,10 @@ public class Cart implements Serializable
     @Column(name = "totalValue", nullable = false)
     private double totalValue;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PaymentMethod paymentMethod;
+
     @ToString.Exclude
     @ManyToOne
     private User user;
