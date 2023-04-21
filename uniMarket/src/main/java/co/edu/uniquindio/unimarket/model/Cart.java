@@ -18,11 +18,8 @@ public class Cart implements Serializable
     @EqualsAndHashCode.Include
     private int idCart;
 
-    @Column(name = "startDate", nullable = false)
-    private LocalDateTime startDate;
-
-    @Column(name = "endingDate", nullable = false)
-    private LocalDateTime endingDate;
+    @Column(name = "buyDate", nullable = false)
+    private LocalDateTime buyDate;
 
     @Column(name = "idUser", nullable = false, length = 20)
     private String idUser;
