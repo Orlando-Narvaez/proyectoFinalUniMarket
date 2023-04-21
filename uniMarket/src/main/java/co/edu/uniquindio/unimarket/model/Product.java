@@ -20,7 +20,7 @@ public class Product implements Serializable
     @Column(name = "name", nullable = false, length = 20)
     private String name;
     @Column(name = "value", nullable = false)
-    private double value;
+    private float value;
     @Column(name = "publicationDate", nullable = false)
     private LocalDateTime publicationDate;
     @Column(name = "limitedDate", nullable = false)
