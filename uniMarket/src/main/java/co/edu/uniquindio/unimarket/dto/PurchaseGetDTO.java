@@ -19,7 +19,7 @@ public class PurchaseGetDTO
 
     private int userCode;
 
-    private PaymentsMethod paymentsMethod;
+    //private PaymentsMethod paymentsMethod;
 
     private List<PurchaseDetailDTO> purchaseDetailDTO;
 }
