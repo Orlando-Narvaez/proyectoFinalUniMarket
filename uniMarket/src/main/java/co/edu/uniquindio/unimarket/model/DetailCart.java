@@ -19,7 +19,7 @@ public class DetailCart implements Serializable
 
     @Column(name = "amount", nullable = false)
     private int amount;
-    
+
     @ManyToOne
     private Cart cart;
 
