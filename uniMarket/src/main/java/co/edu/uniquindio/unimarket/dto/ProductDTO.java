@@ -19,7 +19,7 @@ public class ProductDTO
 
     private int units;
 
-    private float price;
+    private float value;
 
     private int sellerCode;
 
