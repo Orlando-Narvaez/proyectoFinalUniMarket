@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 public class PurchaseDTO
 {
-    private int userCode;
-    private PaymentsMethod paymentsMethod;
-    private List<PurchaseDetailDTO> purchaseDetailDTO;
+    //private int userCode;
+    //private PaymentMethod paymentsMethod;
+    //private List<PurchaseDetailDTO> purchaseDetailDTO;
 }
