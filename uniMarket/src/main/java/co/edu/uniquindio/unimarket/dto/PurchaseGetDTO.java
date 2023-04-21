@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unimarket.dto;
 
-import co.edu.uniquindio.unimarket.model.PaymentsMethod;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
