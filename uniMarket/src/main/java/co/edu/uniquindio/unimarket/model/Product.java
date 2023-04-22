@@ -58,4 +58,8 @@ public class Product implements Serializable
     @ToString.Exclude
     @OneToMany(mappedBy = "product")
     private List<PublicationState> publicationStateList;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "product")
+    private List<Guarantee> guaranteeList;
 }
