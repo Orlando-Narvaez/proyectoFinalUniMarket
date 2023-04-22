@@ -12,8 +12,8 @@ import java.util.List;
 @ToString
 public class User extends Person implements Serializable
 {
-    @Column(name = "idCard", nullable = false)
-    private int idCard;
+    @Column(name = "idUser", nullable = false)
+    private int idUser;
     @Column(name = "creationDate",nullable = false)
     private LocalDateTime creationDate;
 
