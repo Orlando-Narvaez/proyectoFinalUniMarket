@@ -4,9 +4,14 @@ import co.edu.uniquindio.unimarket.model.PaymentMethod;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
+import lombok.*;
 import java.util.List;
 
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class CartDTO
 {
     @NotNull(message = "El id del usuario no puede ser nulo")
