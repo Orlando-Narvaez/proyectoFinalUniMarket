@@ -24,16 +24,13 @@ public class Guarantee implements Serializable
     @Column(name = "dataRequest", nullable = false)
     private LocalDateTime dataRequest;
 
-    @Column(name = "dateDeliver", nullable = false)
-    private LocalDateTime dateDeliver;
-
     @ElementCollection
     @ToString.Exclude
     private Map<String, String> images;
 
     @ToString.Exclude
     @ManyToOne
-    private DetailCart detailCart;
+    private Product product;
 
     @ToString.Exclude
     @ManyToOne
