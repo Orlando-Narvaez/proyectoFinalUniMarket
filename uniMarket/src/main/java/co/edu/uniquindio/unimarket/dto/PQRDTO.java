@@ -6,7 +6,5 @@ public class PQRDTO
 {
     private String description;
 
-    private Boolean state;
-
-    private LocalDateTime dateRequest;
+    private int idCart;
 }
