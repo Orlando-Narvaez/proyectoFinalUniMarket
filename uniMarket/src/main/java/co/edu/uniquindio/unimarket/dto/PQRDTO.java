@@ -6,5 +6,5 @@ public class PQRDTO
 {
     private String description;
 
-    private int idCart;
+    private int idCartUser;
 }
