@@ -19,16 +19,7 @@ public class Person implements Serializable
     private int idCard;
 
     @Column(name = "name1", nullable = false, length = 20)
-    private String name1;
-
-    @Column(name = "name2", nullable = false, length = 20)
-    private String name2;
-
-    @Column(name = "lastName1", nullable = false, length = 20)
-    private String lastName1;
-
-    @Column(name = "lastName2", nullable = false, length = 20)
-    private String LastName2;
+    private String name;
 
     @Column(name = "birthDate", nullable = false)
     private LocalDateTime birthDate;
