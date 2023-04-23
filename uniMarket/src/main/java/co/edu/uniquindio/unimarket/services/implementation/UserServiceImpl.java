@@ -8,7 +8,8 @@ import co.edu.uniquindio.unimarket.services.interfaces.UserService;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService
+{
 
     private  final UserRepo userRepo;
     @Override
@@ -41,8 +42,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserGetDTO getUser(int idUser) throws Exception {
-        return null;
+    public UserGetDTO getUser(int idUser) throws Exception
+    {
+        save = userRepo.findById(idUser);
+        if(save.isEmpty())
+        {
+            throw new Exception("El código "+idUser+" no está asociado a ningún cliente");
+        }
+        return convert( save.get() );
+    }
+    @Override
+    public List<UserGetDTO> listUser()
+    {
+        return convertList( userRepo.findAll() );
     }
 
     private void validateExists(int idUser) throws Exception{
@@ -53,7 +65,8 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private User convert(UserDTO userDTO){
+    private User convert(UserDTO userDTO)
+    {
 
         User user = new User();
         user.setName(userDTO.getName());
@@ -63,5 +76,25 @@ public class UserServiceImpl implements UserService {
         user.setNumPhone(userDTO.getPhoneNumber());
 
         return user;
+    }
+
+    private UserGetDTO convert(User user)
+    {
+        return new UserGetDTO(
+                User.getCode(),
+                User.getName(),
+                User.getEmail(),
+                User.getAddress(),
+                User.getPhoneNumber());
+
+    }
+    private List<UserGetDTO> convertList(List<User> list)
+    {
+        List<UserGetDTO> answer = new ArrayList<>();
+        for(User u : list)
+        {
+            answer.add( convert(u) );
+        }
+        return answer;
     }
 }
