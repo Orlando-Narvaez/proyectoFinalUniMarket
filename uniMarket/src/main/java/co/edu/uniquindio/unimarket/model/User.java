@@ -31,6 +31,10 @@ public class User extends Person implements Serializable
     @OneToMany(mappedBy = "user")
     private List<Cart> cartList;
 
+    @OneToMany(mappedBy = "user")
+    @ToString.Exclude
+    private List<Favorite> favorite;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<Guarantee> guaranteeList;
