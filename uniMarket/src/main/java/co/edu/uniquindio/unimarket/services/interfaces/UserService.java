@@ -13,4 +13,5 @@ public interface UserService
     int deleteUser(int idUser) throws Exception;
 
     UserGetDTO getUser(int idUser) throws Exception;
+
 }
