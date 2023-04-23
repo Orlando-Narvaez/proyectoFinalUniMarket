@@ -4,5 +4,5 @@ import co.edu.uniquindio.unimarket.dto.EmailDTO;
 
 public interface EmailService
 {
-    String sendEmail(EmailDTO emailDTO) throws Exception;
+    void sendEmail(EmailDTO emailDTO) throws Exception;
 }
