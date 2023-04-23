@@ -48,6 +48,10 @@ public class Product implements Serializable
     @ManyToOne
     private User user;
 
+    @OneToMany(mappedBy = "product")
+    @ToString.Exclude
+    private List<Favorite> favorite;
+
     @ToString.Exclude
     @ManyToOne
     private Trademark trademark;
