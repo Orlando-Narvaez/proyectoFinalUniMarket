@@ -9,4 +9,6 @@ public interface CommentsService
     int createComment(CommentsDTO commentDTO) throws Exception;
 
     List<CommentsGetDTO> listComments(int productCode) throws Exception;
+
+    CommentsGetDTO getComment(int productCode) throws Exception;
 }
