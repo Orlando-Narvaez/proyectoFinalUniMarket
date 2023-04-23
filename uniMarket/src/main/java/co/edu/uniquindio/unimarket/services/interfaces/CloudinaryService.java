@@ -9,7 +9,7 @@ public interface CloudinaryService
 {
     Map uploadImage(File file, String carp) throws Exception;
 
-    Map delateImagen(String idImagen) throws Exception;
+    Map deleteImage(String idImage) throws Exception;
 
-    File convert(MultipartFile imagen) throws IOException;
+    File convert(MultipartFile image) throws IOException;
 }
