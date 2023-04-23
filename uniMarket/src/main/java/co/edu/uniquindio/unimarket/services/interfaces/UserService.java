@@ -8,9 +8,9 @@ public interface UserService
 {
     int createUser(UserDTO userDTO)  throws Exception;
 
-    int updateUser(int userCode, UserDTO userDTO) throws Exception;
+    UserDTO updateUser(int idUser, UserDTO userDTO) throws Exception;
 
-    int deleteUser(int userCode) throws Exception;
+    int deleteUser(int idUser) throws Exception;
 
-    UserGetDTO getUser(int userCode) throws Exception;
+    UserGetDTO getUser(int idUser) throws Exception;
 }
