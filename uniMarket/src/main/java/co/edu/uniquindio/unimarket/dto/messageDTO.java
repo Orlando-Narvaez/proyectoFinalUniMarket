@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 @Setter
 @AllArgsConstructor
 @ToString
-public class messageDTO<T>
+public class MessageDTO<T>
 {
     private HttpStatus status;
     private boolean mistake;
