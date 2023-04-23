@@ -7,5 +7,5 @@ public interface DetailCartService
 {
     DetailCartGetDTO getCartDetail(int id) throws Exception;
 
-    DetailCart get(int id) throws Exception;
+    //DetailCart get(int id) throws Exception;
 }
