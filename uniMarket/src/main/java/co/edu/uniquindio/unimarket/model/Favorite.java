@@ -18,10 +18,10 @@ public class Favorite
     @Id
     @EqualsAndHashCode.Include
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idFavorito;
+    private int idFavorite;
 
     @Column(nullable = false)
-    private LocalDateTime fechaAgregado;
+    private LocalDateTime dateAdd;
 
     @ManyToOne
     @JoinColumn(nullable = false)
