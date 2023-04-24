@@ -3,16 +3,23 @@ package co.edu.uniquindio.unimarket.services.implementation;
 import co.edu.uniquindio.unimarket.model.Moderator;
 import co.edu.uniquindio.unimarket.model.State;
 import co.edu.uniquindio.unimarket.services.interfaces.ModeratorService;
+import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
+@Service
+@AllArgsConstructor
 public class ModeratorServiceImpl implements ModeratorService
 {
-    @Override
-    public Moderator getModeratorId(int idMod) throws Exception {
-        return null;
-    }
+    private  final ProductService productService;
 
     @Override
-    public int updateState(int productCode, State state) throws Exception {
-        return 0;
+    public boolean updateState(int productCode, State state) throws Exception
+    {
+        boolean answer = false;
+
+        if (productService.)
+
+        return false;
     }
 }
