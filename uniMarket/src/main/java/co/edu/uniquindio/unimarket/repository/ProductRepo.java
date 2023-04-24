@@ -1,19 +1,26 @@
 package co.edu.uniquindio.unimarket.repository;
 
+import co.edu.uniquindio.unimarket.model.Categories;
 import co.edu.uniquindio.unimarket.model.Product;
+import co.edu.uniquindio.unimarket.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProductRepo extends JpaRepository<Product,Integer>
 {
-    //@Query("select p from Producto p where p.vendedor.codigo = :codigoUsuario")
-    //List<Producto> listarProductosUsuario(int codigoUsuario);
-    @Query("select p from Product p where p.user.idUser = :idUser")
-    Product getFavoritesByUser(int idUser);
-    @Query("select p from Product p where p.value >= :startPrice and p.value <= :endPrice")
-    List<Product> getProductsWithRange(float startPrice, float endPrice);
+    @Query("select p from Product p where p.value >= :priceMin AND p.value <= :priceMax")
+    List<Product> getProductRangePrice(double priceMin, double priceMax);
 
-    @Query("select p from Product p where p.name like concat( '%', :name, '%' ) and p.state = true ")
-    List<Product> listProductForName(String name);
+    @Query("select p from Product p where :categories member of p.categoriesList")
+    List<Product> getProductCategories(Categories categories);
+
+    @Query("select p from Product p where :user member of p.favorite")
+    List<Product> getProductsFavs(User user);
+
+    @Query("select p from Product p where p.name like concat('%', :name, '%') AND p.state = 'ACEPTADO' ")
+    List<Product> getProductName(String name);
+
+    @Query("select p from Product p where p.seller.idCard = :idCard")
+    List<Product> getProductUsers(int idCard);
 }
