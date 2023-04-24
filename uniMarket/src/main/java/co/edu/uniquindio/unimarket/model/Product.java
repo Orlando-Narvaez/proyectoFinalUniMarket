@@ -20,7 +20,7 @@ public class Product implements Serializable
     @Column(name = "name", nullable = false, length = 20)
     private String name;
     @Column(name = "value", nullable = false)
-    private float value;
+    private double value;
     @Column(name = "publicationDate", nullable = false)
     private LocalDateTime publicationDate;
     @Column(name = "limitedDate", nullable = false)
@@ -28,33 +28,26 @@ public class Product implements Serializable
     @Column(name = "description", nullable = false)
     private String description;
     @Column(name = "state", nullable = false)
-    private Boolean state;
-    @Column(name = "amount", nullable = false)
-    private int amount;
+    private State state;
+
+    @ToString.Exclude
+    @ManyToOne
+    private User seller;
+
     @ElementCollection
     @ToString.Exclude
     private Map<String, String> images;
     @ElementCollection
     @ToString.Exclude
     private List<Categories> categoriesList;
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "productList")
-    private List<User> userList;
+
     @ToString.Exclude
     @OneToMany(mappedBy = "product")
     private List<DetailCart> detailCartList;
 
-    @ToString.Exclude
-    @ManyToOne
-    private User user;
-
     @OneToMany(mappedBy = "product")
     @ToString.Exclude
     private List<Favorite> favorite;
-
-    @ToString.Exclude
-    @ManyToOne
-    private Trademark trademark;
 
     @ToString.Exclude
     @OneToMany(mappedBy = "product")
