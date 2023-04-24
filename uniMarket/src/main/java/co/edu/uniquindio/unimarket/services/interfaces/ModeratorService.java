@@ -5,7 +5,5 @@ import co.edu.uniquindio.unimarket.model.State;
 
 public interface ModeratorService
 {
-    Moderator getModeratorId(int idMod) throws Exception;
-
-    int updateState(int productCode, State state) throws Exception;
+    boolean updateState(int productCode, State state) throws Exception;
 }
