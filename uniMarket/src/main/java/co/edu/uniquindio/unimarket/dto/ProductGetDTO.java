@@ -1,12 +1,15 @@
 package co.edu.uniquindio.unimarket.dto;
 
 import co.edu.uniquindio.unimarket.model.Categories;
+import co.edu.uniquindio.unimarket.model.State;
+import co.edu.uniquindio.unimarket.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 @AllArgsConstructor
 @Getter
@@ -14,23 +17,23 @@ import java.util.List;
 @NoArgsConstructor
 public class ProductGetDTO
 {
-    private int code;
-
-    private boolean state;
-
-    private LocalDateTime deadLine;
+    private int idProduct;
 
     private String name;
 
+    private double price;
+
+    private LocalDateTime publicationDate;
+
+    private LocalDateTime limitedDate;
+
     private String description;
 
-    private int units;
-
-    private float price;
+    private State state;
 
     private int sellerCode;
 
-    private List<String> images;
+    private Map<String, String> images;
 
     private List<Categories> categories;
 }
