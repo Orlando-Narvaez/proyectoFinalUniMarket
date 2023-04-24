@@ -14,4 +14,5 @@ public interface UserService
 
     UserGetDTO getUser(int idUser) throws Exception;
 
+    User getUserDataBase(int idUser) throws Exception;
 }
