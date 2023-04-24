@@ -18,8 +18,11 @@ public class ModeratorServiceImpl implements ModeratorService
     {
         boolean answer = false;
 
-        if (productService.)
+        if (productService.updateForState(productCode, state) > 0 )
+        {
+            answer = true;
+        }
 
-        return false;
+        return answer;
     }
 }
