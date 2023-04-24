@@ -15,11 +15,21 @@ public class UserServiceImpl implements UserService
     @Override
     public int createUser(UserDTO userDTO) throws Exception
     {
-        User search = userRepo.searchUser(userDTO.getEmail());
+        User searchEmail = userRepo.findByEmail(userDTO.getEmail());
+        User searchUser = validateExists(userDTO.getIdCard());
+        User user = new User();
 
-        if(search!=null){
+        if(searchEmail!=null){
             throw new Exception("El correo "+userDTO.getEmail()+" ya está en uso");
+        } else if ()
+        {
+            user.setName(userDTO.getName());
+            user.setEmail(userDTO.getEmail());
+            user.setPassword(userDTO.getPassword());
+            user.setAddress(userDTO.getAddress());
+            user.setNumPhone(userDTO.getPhoneNumber());
         }
+
 
         User user = convert(userDTO);
         return userRepo.save(user).getIdUser();
@@ -58,7 +68,7 @@ public class UserServiceImpl implements UserService
     }
 
     private void validateExists(int idUser) throws Exception{
-        boolean exists = userRepo.existsById(idUser);
+        boolean exists = userRepo.existsById(id);
 
         if( !exists ){
             throw new Exception("El código "+idUser+" no está asociado a ningún usuario");
