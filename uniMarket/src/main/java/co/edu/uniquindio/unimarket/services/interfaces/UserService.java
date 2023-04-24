@@ -4,15 +4,19 @@ import co.edu.uniquindio.unimarket.dto.UserDTO;
 import co.edu.uniquindio.unimarket.dto.UserGetDTO;
 import co.edu.uniquindio.unimarket.model.User;
 
+import java.util.List;
+
 public interface UserService
 {
     int createUser(UserDTO userDTO)  throws Exception;
 
-    UserDTO updateUser(int idUser, UserDTO userDTO) throws Exception;
+    int updateUser(int idCard, UserDTO userDTO) throws Exception;
 
-    int deleteUser(int idUser) throws Exception;
+    UserGetDTO getUser(int idCard) throws Exception;
 
-    UserGetDTO getUser(int idUser) throws Exception;
+    List<UserGetDTO> getUsers() throws Exception;
 
-    User getUserDataBase(int idUser) throws Exception;
+    boolean createProductFavUser(User user) throws Exception;
+
+    User getUserDataBase(int idCard) throws Exception;
 }
