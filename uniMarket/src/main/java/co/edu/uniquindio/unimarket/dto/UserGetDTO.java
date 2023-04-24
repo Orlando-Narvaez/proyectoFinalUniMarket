@@ -14,7 +14,9 @@ import java.util.List;
 @ToString
 public class UserGetDTO
 {
-    private int code;
+    private int idUser;
+
+    private  int idCard;
 
     private String name;
 
@@ -23,4 +25,6 @@ public class UserGetDTO
     private String address;
 
     private String phoneNumber;
+
+    List<ProductGetDTO> lstFav;
 }
