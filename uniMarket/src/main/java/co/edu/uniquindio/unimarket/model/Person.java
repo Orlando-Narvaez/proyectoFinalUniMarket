@@ -18,7 +18,7 @@ public class Person implements Serializable
     @EqualsAndHashCode.Include
     private int idCard;
 
-    @Column(name = "name1", nullable = false, length = 20)
+    @Column(name = "name", nullable = false, length = 20)
     private String name;
 
     @Column(name = "birthDate", nullable = false)
