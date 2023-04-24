@@ -15,6 +15,7 @@ public class Comments implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
 
