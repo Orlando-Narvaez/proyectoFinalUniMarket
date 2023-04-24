@@ -1,110 +1,110 @@
 package co.edu.uniquindio.unimarket.services.implementation;
 
+import co.edu.uniquindio.unimarket.dto.ProductGetDTO;
 import co.edu.uniquindio.unimarket.dto.UserDTO;
 import co.edu.uniquindio.unimarket.dto.UserGetDTO;
 import co.edu.uniquindio.unimarket.model.User;
 import co.edu.uniquindio.unimarket.repository.UserRepo;
+import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
 import co.edu.uniquindio.unimarket.services.interfaces.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
+@Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService
 {
+    private final UserRepo userRepo;
+    private final ProductService productService;
 
-    private  final UserRepo userRepo;
     @Override
     public int createUser(UserDTO userDTO) throws Exception
     {
-        User searchEmail = userRepo.findByEmail(userDTO.getEmail());
-        User searchUser = validateExists(userDTO.getIdCard());
-        User user = new User();
+        User searchUser = getUserDataBase(userDTO.getIdCard());
+        User newUser = new User();
 
-        if(searchEmail!=null){
-            throw new Exception("El correo "+userDTO.getEmail()+" ya está en uso");
-        } else if ()
+        if (searchUser != null)
         {
-            user.setName(userDTO.getName());
-            user.setEmail(userDTO.getEmail());
-            user.setPassword(userDTO.getPassword());
-            user.setAddress(userDTO.getAddress());
-            user.setNumPhone(userDTO.getPhoneNumber());
+            newUser.setIdCard(userDTO.getIdCard());
+            newUser.setName(userDTO.getName());
+            newUser.setEmail(userDTO.getEmail());
+            newUser.setPassword(userDTO.getPassword());
+            newUser.setAddress(userDTO.getAddress());
+            newUser.setNumPhone(userDTO.getPhoneNumber());
         }
 
-
-        User user = convert(userDTO);
-        return userRepo.save(user).getIdUser();
+        return userRepo.save(newUser).getIdCard();
     }
 
     @Override
-    public UserDTO updateUser(int idUser, UserDTO userDTO) throws Exception
+    public int updateUser(int idCard, UserDTO userDTO) throws Exception
     {
-        validateExists(idUser);
-
-        User user = convert(userDTO);
-        user.setIdUser(user.getIdUser());
-
-        return convert(userRepo.save(user));
-    }
-
-    @Override
-    public int deleteUser(int idUser) throws Exception {
-        return 0;
-    }
-
-    @Override
-    public UserGetDTO getUser(int idUser) throws Exception
-    {
-        save = userRepo.findById(idUser);
-        if(save.isEmpty())
-        {
-            throw new Exception("El código "+idUser+" no está asociado a ningún cliente");
-        }
-        return convert( save.get() );
-    }
-    @Override
-    public List<UserGetDTO> listUser()
-    {
-        return convertList( userRepo.findAll() );
-    }
-
-    private void validateExists(int idUser) throws Exception{
-        boolean exists = userRepo.existsById(id);
-
-        if( !exists ){
-            throw new Exception("El código "+idUser+" no está asociado a ningún usuario");
-        }
-    }
-
-    private User convert(UserDTO userDTO)
-    {
-
-        User user = new User();
+        User user = getUserDataBase(idCard);
+        user.setIdCard(userDTO.getIdCard());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
         user.setAddress(userDTO.getAddress());
         user.setNumPhone(userDTO.getPhoneNumber());
 
-        return user;
+        return userRepo.save(user).getIdCard();
     }
 
-    private UserGetDTO convert(User user)
+    @Override
+    public UserGetDTO getUser(int idCard) throws Exception
     {
-        return new UserGetDTO(
-                User.getCode(),
-                User.getName(),
-                User.getEmail(),
-                User.getAddress(),
-                User.getPhoneNumber());
-
+        return convertUser(getUserDataBase(idCard));
     }
-    private List<UserGetDTO> convertList(List<User> list)
+
+    @Override
+    public List<UserGetDTO> getUsers() throws Exception
     {
-        List<UserGetDTO> answer = new ArrayList<>();
-        for(User u : list)
+        List<User> lstUsers = userRepo.findAll();
+        List<UserGetDTO> lstUserGetDTO = new ArrayList<>();
+
+        if (lstUsers != null && lstUsers.size() > 0)
         {
-            answer.add( convert(u) );
+            lstUsers.forEach(user -> {
+                lstUserGetDTO.add(convertUser(user));
+            });
         }
-        return answer;
+
+        return lstUserGetDTO;
+    }
+
+    @Override
+    public boolean createProductFavUser(User user) throws Exception
+    {
+        return false;
+        //return userRepo.save(user).getIdCard();
+    }
+
+    @Override
+    public User getUserDataBase(int idCard) throws Exception
+    {
+        Optional<User> user = userRepo.findById(idCard);
+
+        if (user.isEmpty())
+        {
+            throw new Exception("El usuario con el codigo "+idCard+" no existe");
+        }
+
+        return user.get();
+    }
+
+    private UserGetDTO convertUser(User user)
+    {
+        UserGetDTO userGetDTO = new UserGetDTO(
+                user.getIdUser(),
+                user.getIdCard(),
+                user.getName(),
+                user.getEmail(),
+                user.getAddress(),
+                user.getNumPhone(),
+                new ArrayList<ProductGetDTO>());
+        return userGetDTO;
     }
 }
