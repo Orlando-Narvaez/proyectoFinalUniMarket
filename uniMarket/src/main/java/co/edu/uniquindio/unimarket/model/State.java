@@ -2,6 +2,8 @@ package co.edu.uniquindio.unimarket.model;
 
 public enum State
 {
-    Aceptado,
-    Denegado,
+    ACEPTADO,
+    DENEGADO,
+    ACTIVO,
+    INACTIVO
 }
