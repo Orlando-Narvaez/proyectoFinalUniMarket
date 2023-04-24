@@ -21,6 +21,8 @@ public interface ProductService
 
     ProductGetDTO getProduct(int idProduct) throws Exception;
 
+    Product getProductDataBase(int idProduct)throws Exception;
+
     List<ProductGetDTO> listUserProducts(int idProduct) throws Exception;
 
     List<ProductGetDTO> listCategoriesProducts(Categories categories) throws Exception;
