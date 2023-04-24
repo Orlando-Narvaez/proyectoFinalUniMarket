@@ -14,13 +14,13 @@ import org.hibernate.validator.constraints.Length;
 
 public class UserDTO
 {
+    @NotNull(message = "La identificacion no puede ser nulo")
+    private int idCard;
+
     @NotBlank(message = "El nombre no puede estar vacío")
     @NotNull(message = "El nombre no puede ser nulo")
     @Length(max = 150, message = "El nombre debe tener máximo 100 caracteres")
     private String name;
-
-    @NotNull(message = "La identificacion no puede ser nulo")
-    private int idCard;
 
     @NotBlank(message = "El correo no puede estar vacío")
     @NotNull(message = "El correo no puede ser nulo")
