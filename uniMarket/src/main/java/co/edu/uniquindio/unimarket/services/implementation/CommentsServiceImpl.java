@@ -30,7 +30,7 @@ public class CommentsServiceImpl implements CommentsService
         comments.setComment(commentDTO.getMessage());
         comments.setDateComment(LocalDateTime.now());
         comments.setUser(userService.getUserDataBase(commentDTO.getUserCode()));
-        comments.setProduct(productService.getProductDataBase(commentDTO.getProductCode()));
+        comments.setProduct(productService.getProductBD(commentDTO.getProductCode()));
         return commentsRepo.save(comments).getId();
     }
 
