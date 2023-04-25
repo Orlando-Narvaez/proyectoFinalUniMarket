@@ -24,4 +24,8 @@ public class Moderator extends Person implements Serializable
     @ToString.Exclude
     @OneToMany(mappedBy = "moderator")
     private List<PublicationState> publicationStateList;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "moderador")
+    private List<Address> addressList;
 }
