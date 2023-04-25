@@ -22,7 +22,7 @@ public class PQR implements Serializable
     private String description;
 
     @Column(name = "state", nullable = false)
-    private Boolean state;
+    private State state;
 
     @Column(name = "dateRequest", nullable = false)
     private LocalDateTime dateRequest;
