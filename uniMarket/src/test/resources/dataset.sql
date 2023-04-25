@@ -1,4 +1,3 @@
-
 -- Person (idCard, name, birthDate, address, numPhone, userName, email, password)
 insert into Person values (41896158, "Ligia Ballen Marin", '1961-08-08', "Br montevideo mz 6 casa 8",
                            "3207507060", "LigiaBM", "juliancho.quiroga@hotmail.com", "Ligia0811");
@@ -13,29 +12,29 @@ insert into Person values (29320442, "Mercedes Marin Benitez", '1933-09-01', "Br
 --user (idCard, name, telefono, email, nombreusuario, contraseña, estado, direccion)
 
 insert into user values (41896158, "Ligia Ballen Marin", "3207507060", "juliancho.quiroga@hotmail.com",
-                            "LigiaBM", "Ligia0811", "ACTIVO", "Br montevideo mz 6 casa 8");
+                         "LigiaBM", "Ligia0811", "ACTIVO", "Br montevideo mz 6 casa 8");
 insert into user values (1094941113, "Diana Josefina Gomez Velasco", "3142231245", "dijogovel18@hotmail.com",
-                            "DianaGV", "AnaLucia11", "ACTIVO", "Urb Villa Ximena Bloq 1 Apto 301");
+                         "DianaGV", "AnaLucia11", "ACTIVO", "Urb Villa Ximena Bloq 1 Apto 301");
 insert into user values (1098123651, "Orlando Narvaez Baracaldo", "3168669742", "chachonarvaez@gmail.com",
-                            "Chacho", "0987654321", "INACTIVO", "Barrio la pavona mz 11 c # 12");
+                         "Chacho", "0987654321", "INACTIVO", "Barrio la pavona mz 11 c # 12");
 insert into user values (1094936382, "Julian Andres Quiroga Ballen", "3128190284", "jaquirogab@uqvirtual.edu.co",
-                            "JulianQB", "taz123", "ACTIVO", "Br montevideo mz 6 casa 8");
+                         "JulianQB", "taz123", "ACTIVO", "Br montevideo mz 6 casa 8");
 insert into user values (29320442, "Mercedes Marin Benitez", "7349018", "juliancho.quiroga@gmail.com",
-                            "MercedesMB", "0oo00123", "INACTIVO", "Br montevideo mz 6 casa 8");
+                         "MercedesMB", "0oo00123", "INACTIVO", "Br montevideo mz 6 casa 8");
 
 
 --user (idCard, name, numPhone, email, userName, password, address)
 
 insert into User values (41896158, "Ligia Ballen Marin", "3207507060", "juliancho.quiroga@hotmail.com",
-                            "LigiaBM", "Ligia0811", "Br montevideo mz 6 casa 8");
+                         "LigiaBM", "Ligia0811", "Br montevideo mz 6 casa 8");
 insert into User values (1094941113, "Diana Josefina Gomez Velasco", "3142231245", "dijogovel18@hotmail.com",
-                            "DianaGV", "AnaLucia11", "Urb Villa Ximena Bloq 1 Apto 301");
+                         "DianaGV", "AnaLucia11", "Urb Villa Ximena Bloq 1 Apto 301");
 insert into User values (1098123651, "Orlando Narvaez Baracaldo", "3168669742", "chachonarvaez@gmail.com",
-                            "Chacho", "0987654321", "Barrio la pavona mz 11 c # 12");
+                         "Chacho", "0987654321", "Barrio la pavona mz 11 c # 12");
 insert into User values (1094936382, "Julian Andres Quiroga Ballen", "3128190284", "jaquirogab@uqvirtual.edu.co",
-                            "JulianQB", "taz123", "Br montevideo mz 6 casa 8");
+                         "JulianQB", "taz123", "Br montevideo mz 6 casa 8");
 insert into User values (29320442, "Mercedes Marin Benitez", "7349018", "juliancho.quiroga@gmail.com",
-                            "MercedesMB", "0oo00123", "Br montevideo mz 6 casa 8");
+                         "MercedesMB", "0oo00123", "Br montevideo mz 6 casa 8");
 
 
 --moderator (idMod, name, email, numPhone, userName, password, address)
