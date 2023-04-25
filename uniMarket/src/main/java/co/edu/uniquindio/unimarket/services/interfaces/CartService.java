@@ -15,5 +15,4 @@ public interface CartService
     CartGetDTO getCart(int idCart) throws Exception;
     Cart getCartBD(int idCart) throws Exception;
     List<CartGetDTO> listCartForUser(int idCard) throws Exception;
-    List<CartGetDTO> listCartForState(StateCart stateCart) throws Exception;
 }
