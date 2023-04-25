@@ -16,7 +16,7 @@ public interface UserService
 
     List<UserGetDTO> getUsers() throws Exception;
 
-    boolean createProductFavUser(User user) throws Exception;
+    int createProductFavUser(User user) throws Exception;
 
     User getUserDataBase(int idCard) throws Exception;
 }
