@@ -18,7 +18,7 @@ public class Address implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
-    private String descripcion;
+    private String description;
     @Column(nullable = false)
     private int postalCod;
     @ManyToOne
