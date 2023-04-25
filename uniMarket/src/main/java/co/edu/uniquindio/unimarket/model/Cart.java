@@ -25,7 +25,7 @@ public class Cart implements Serializable
     private String idUser;
 
     @Column(name = "totalValue", nullable = false)
-    private float totalValue;
+    private double totalValue;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
