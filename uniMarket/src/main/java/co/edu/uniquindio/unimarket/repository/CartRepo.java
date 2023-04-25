@@ -9,6 +9,6 @@ import java.util.List;
 @Repository
 public interface CartRepo extends JpaRepository<Cart, Integer>
 {
-    @Query("SELECT c FROM Cart c WHERE c.user.idCard = : idUser")
-    List<Cart> findByCartIdUser(int idUser);
+    @Query("select c from Cart c where c.user.idCard = :idCard")
+    List<Cart> getLstCartForUser(int idCard);
 }
