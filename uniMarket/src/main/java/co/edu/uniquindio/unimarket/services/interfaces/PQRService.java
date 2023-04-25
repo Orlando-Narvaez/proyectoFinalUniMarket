@@ -9,7 +9,7 @@ public interface PQRService
 {
     int createPQR(PQRDTO pqrDTO) throws Exception;
 
-    List<PQRDTO> listPQR(int id) throws Exception;
+    int updatePQR(int id, PQRDTO pqrdto) throws Exception;
 
     PQRGetDTO getPQR(int id) throws Exception;
 }
