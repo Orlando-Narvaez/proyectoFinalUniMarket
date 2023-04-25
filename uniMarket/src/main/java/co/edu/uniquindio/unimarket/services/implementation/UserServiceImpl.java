@@ -76,7 +76,7 @@ public class UserServiceImpl implements UserService
     }
 
     @Override
-    public boolean createProductFavUser(User user) throws Exception
+    public int createProductFavUser(User user) throws Exception
     {
         return userRepo.save(user).getIdCard();
     }
