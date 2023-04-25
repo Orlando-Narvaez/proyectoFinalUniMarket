@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.dto;
 
+import co.edu.uniquindio.unimarket.model.User;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -35,7 +36,7 @@ public class UserPostDTO
         {
             throw new AttributeException("El correo "+UserDTO.getEmail()+" ya está en uso");
         }
-        User user = new user();
+        User user = new User();
         user.setName( UserDTO.getName() );
         user.setEmail( UserDTO.getEmail() );
         user.setAddress( UserDTO.getAddress() );
