@@ -29,7 +29,7 @@ public class AddressServiceImpl implements AddressService
 
         if (user != null)
         {
-            newAddress.setDescripcion(addressDTO.getDescripcion());
+            newAddress.setDescription(addressDTO.getDescripcion());
             newAddress.setPostalCod(addressDTO.getPostalCod());
             newAddress.setUser(user);
 
@@ -45,7 +45,7 @@ public class AddressServiceImpl implements AddressService
         Address address = getAddresBD(id);
         if (address != null) {
             address.setId(id);
-            address.setDescripcion(addressDTO.getDescripcion());
+            address.setDescription(addressDTO.getDescripcion());
             address.setPostalCod(addressDTO.getPostalCod());
 
             return addressRepo.save(address).getId();
@@ -95,7 +95,7 @@ public class AddressServiceImpl implements AddressService
     {
         AddressGetDTO addressGetDTO = new AddressGetDTO(
                 address.getId(),
-                address.getDescripcion(),
+                address.getDescription(),
                 address.getPostalCod(),
                 address.getUser().getIdCard()
         );
