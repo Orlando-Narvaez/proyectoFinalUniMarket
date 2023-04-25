@@ -4,7 +4,7 @@ import co.edu.uniquindio.unimarket.dto.FavoriteDTO;
 
 public interface FavoriteService
 {
-    int createFavorite(FavoriteDTO favoriteDTO) throws Exception;
+    boolean createFavorite(FavoriteDTO favoriteDTO) throws Exception;
 
-    Boolean delateFavorite(int idUser, int idProduct) throws Exception;
+    boolean delateFavorite(FavoriteDTO favoriteDTO) throws Exception;
 }
