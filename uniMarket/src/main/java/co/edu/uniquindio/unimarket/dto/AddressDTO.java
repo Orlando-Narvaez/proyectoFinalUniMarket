@@ -19,5 +19,5 @@ public class AddressDTO
     @NotNull
     private int postalCod;
     @NotNull
-    private String idCardUser;
+    private int idCardUser;
 }
