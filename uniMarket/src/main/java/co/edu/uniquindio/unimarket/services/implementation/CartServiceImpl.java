@@ -71,7 +71,7 @@ public class CartServiceImpl implements CartService
                 cart.getBuyDate(),
                 cart.getUser().getIdUser(),
                 cart.getTotalValue(),
-                detailCartService.convertLista(cart.getDetailCartList()),
+                cart.getPaymentMethod()
         );
 
         return cartGetDTO;
