@@ -14,15 +14,11 @@ public class CartGetDTO
 {
     private int idCart;
 
-    private LocalDateTime startDate;
-
     private LocalDateTime buyDate;
 
-    private String idUser;
+    private int idUser;
 
     private double totalValue;
 
     private PaymentMethod paymentMethod;
-
-    private List<DetailCart> detailCartList;
 }
