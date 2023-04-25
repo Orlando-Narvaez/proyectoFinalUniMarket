@@ -10,6 +10,7 @@ import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,17 +22,53 @@ public class DetailCartImpl implements DetailCartService
     private final DetailCartRepo detailCartRepo;
 
     @Override
-    public int createDetailCart(int id, DetailCartDTO detailCartDTO) throws Exception {
-        return 0;
+    public int createDetailCart(int id, DetailCartDTO detailCartDTO) throws Exception
+    {
+        DetailCart detailCart = new DetailCart();
+
+        detailCart.setCart(cartService.getCartBD(id));
+        detailCart.setAmount(detailCartDTO.getAmount());
+        detailCart.setValue(detailCartDTO.getValue());
+        detailCart.setProduct(productService.getProductBD(detailCart.getId()));
+
+        return detailCartRepo.save(detailCart).getId();
     }
 
     @Override
-    public List<DetailCartGetDTO> getDetailsForCart(int id) throws Exception {
-        return null;
+    public List<DetailCartGetDTO> getDetailsForCart(int id) throws Exception
+    {
+        List<DetailCartGetDTO> lstAnswerDetail = new ArrayList<>();
+        List<DetailCart> lstDetailCar = detailCartRepo.getDetailCartForCart(id);
+        if (lstDetailCar != null && lstDetailCar.size() > 0) {
+            lstDetailCar.forEach(detailCart -> {
+                lstAnswerDetail.add(convertDetailCart(detailCart));
+            });
+        }
+
+        return lstAnswerDetail;
     }
 
     @Override
-    public List<DetailCartGetDTO> convertLista(List<DetailCart> lstDetailCart) {
-        return null;
+    public List<DetailCartGetDTO> convertLista(List<DetailCart> lstDetailCart)
+    {
+        List<DetailCartGetDTO> lstDetailAnswer = new ArrayList<>();
+        if (lstDetailCart != null && lstDetailCart.size() > 0) {
+            lstDetailCart.forEach(detailCart -> {
+                lstDetailAnswer.add(convertDetailCart(detailCart));
+            });
+        }
+
+        return lstDetailAnswer;
+    }
+
+    private DetailCartGetDTO convertDetailCart(DetailCart detailCart) {
+        DetailCartGetDTO detailCartGetDTO = new DetailCartGetDTO(
+                detailCart.getId(),
+                detailCart.getValue(),
+                detailCart.getAmount(),
+                detailCart.getProduct().getIdProduct()
+        );
+
+        return detailCartGetDTO;
     }
 }
