@@ -48,4 +48,8 @@ public class User extends Person implements Serializable
     @ToString.Exclude
     @OneToMany(mappedBy = "user")
     private List<Product> productPublicationList;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user")
+    private List<Address> addressList;
 }
