@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.dto;
 
+import co.edu.uniquindio.unimarket.model.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,7 @@ public class PQRGetDTO
 
     private String description;
 
-    private Boolean state;
+    private State state;
 
     private LocalDateTime dateRequest;
 
