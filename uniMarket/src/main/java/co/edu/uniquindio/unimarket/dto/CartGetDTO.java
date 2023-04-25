@@ -20,7 +20,7 @@ public class CartGetDTO
 
     private String idUser;
 
-    private float totalValue;
+    private double totalValue;
 
     private PaymentMethod paymentMethod;
 
