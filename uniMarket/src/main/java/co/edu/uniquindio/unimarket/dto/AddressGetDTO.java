@@ -12,5 +12,5 @@ public class AddressGetDTO
     private int id;
     private String descripcion;
     private int postalCod;
-    private String idCardUser;
+    private int idCardUser;
 }
