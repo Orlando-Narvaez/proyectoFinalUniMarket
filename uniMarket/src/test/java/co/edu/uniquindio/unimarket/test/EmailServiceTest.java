@@ -1,45 +1,28 @@
 package co.edu.uniquindio.unimarket.test;
 
-import co.edu.uniquindio.unimarket.dto.ProductDTO;
-import co.edu.uniquindio.unimarket.model.Categories;
-import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
-import org.junit.jupiter.api.Assertions;
+import co.edu.uniquindio.unimarket.dto.EmailDTO;
+import co.edu.uniquindio.unimarket.services.interfaces.EmailService;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.jdbc.Sql;
-import org.springframework.util.LinkedCaseInsensitiveMap;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+@SpringBootTest
+@Transactional
 public class EmailServiceTest
 {
     @Autowired
-    private ProductService productService;
+    private EmailService emailService;
 
     @Test
-    @Sql("classpath:dataset.sql")
-    public void createProduct()
+    public void sendEmail()
     {
         try {
-            Map<String,String> lstImages = new LinkedCaseInsensitiveMap<>();
-            lstImages.put("1", "https://www.wallpaperbetter.com/es/hd-wallpaper-asswj");
-            List<Categories> lstCategories = new ArrayList<>();
-            lstCategories.add(Categories.Belleza);
-            ProductDTO productDTO = new ProductDTO(
-                    "Producto de prueba",
-                    15000,
-                    "Pertenece el producto a un test",
-                    1,
-                    lstImages,
-                    lstCategories
-            );
-
-            int idProduct = productService.createProduct(productDTO);
-
-            Assertions.assertNotEquals(0, idProduct);
-
+            emailService.sendEmail(new EmailDTO(
+                    "Correo del test",
+                    "Correo que se ejecuto del test",
+                    "juliancho.quiroga@hotmail.com"
+            ));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
