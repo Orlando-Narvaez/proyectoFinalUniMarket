@@ -1,45 +1,47 @@
 package co.edu.uniquindio.unimarket.test;
 
-import co.edu.uniquindio.unimarket.dto.ProductDTO;
-import co.edu.uniquindio.unimarket.model.Categories;
-import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
+import co.edu.uniquindio.unimarket.dto.FavoriteDTO;
+import co.edu.uniquindio.unimarket.services.interfaces.FavoriteService;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.util.LinkedCaseInsensitiveMap;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
+@SpringBootTest
+@Transactional
 public class FavoriteServiceTest
 {
     @Autowired
-    private ProductService productService;
+    private FavoriteService favoriteService;
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void createFavorite()
+    {
+        try {
+            boolean answer = favoriteService.createFavorite(new FavoriteDTO(
+                    1094978017,
+                    3
+            ));
+
+            Assertions.assertTrue(answer);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void createProduct()
+    public void delateFavorite()
     {
         try {
-            Map<String,String> lstImages = new LinkedCaseInsensitiveMap<>();
-            lstImages.put("1", "https://www.wallpaperbetter.com/es/hd-wallpaper-asswj");
-            List<Categories> lstCategories = new ArrayList<>();
-            lstCategories.add(Categories.Belleza);
-            ProductDTO productDTO = new ProductDTO(
-                    "Producto de prueba",
-                    15000,
-                    "Pertenece el producto a un test",
-                    1,
-                    lstImages,
-                    lstCategories
-            );
+            boolean answer = favoriteService.delateFavorite(new FavoriteDTO(
+                    1094978017,
+                    3
+            ));
 
-            int idProduct = productService.createProduct(productDTO);
-
-            Assertions.assertNotEquals(0, idProduct);
-
+            Assertions.assertTrue(answer);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
