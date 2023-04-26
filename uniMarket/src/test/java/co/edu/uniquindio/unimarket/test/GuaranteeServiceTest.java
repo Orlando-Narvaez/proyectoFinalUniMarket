@@ -1,45 +1,54 @@
 package co.edu.uniquindio.unimarket.test;
 
-import co.edu.uniquindio.unimarket.dto.ProductDTO;
-import co.edu.uniquindio.unimarket.model.Categories;
-import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
+import co.edu.uniquindio.unimarket.dto.GuaranteeDTO;
+import co.edu.uniquindio.unimarket.dto.GuaranteeGetDTO;
+import co.edu.uniquindio.unimarket.services.interfaces.GuaranteeService;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.util.LinkedCaseInsensitiveMap;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@SpringBootTest
+@Transactional
 public class GuaranteeServiceTest
 {
     @Autowired
-    private ProductService productService;
+    private GuaranteeService guaranteeService;
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void createProduct()
+    public void createGuarantee()
     {
         try {
             Map<String,String> lstImages = new LinkedCaseInsensitiveMap<>();
             lstImages.put("1", "https://www.wallpaperbetter.com/es/hd-wallpaper-asswj");
-            List<Categories> lstCategories = new ArrayList<>();
-            lstCategories.add(Categories.Belleza);
-            ProductDTO productDTO = new ProductDTO(
-                    "Producto de prueba",
-                    15000,
-                    "Pertenece el producto a un test",
-                    1,
+            int idGuarantee = guaranteeService.createGuarantee(new GuaranteeDTO(
+                    "La pavona",
                     lstImages,
-                    lstCategories
-            );
+                    1,
+                    1094978017
+            ));
 
-            int idProduct = productService.createProduct(productDTO);
+            Assertions.assertNotEquals(0, idGuarantee);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-            Assertions.assertNotEquals(0, idProduct);
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listGuarantee()
+    {
+        try {
+            List<GuaranteeGetDTO> lstGuarantee = guaranteeService.listGuarantee(3);
 
+            Assertions.assertEquals(1, lstGuarantee.size());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
