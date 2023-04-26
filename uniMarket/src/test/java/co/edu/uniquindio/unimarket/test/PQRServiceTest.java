@@ -1,45 +1,48 @@
 package co.edu.uniquindio.unimarket.test;
 
-import co.edu.uniquindio.unimarket.dto.ProductDTO;
-import co.edu.uniquindio.unimarket.model.Categories;
-import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
+import co.edu.uniquindio.unimarket.dto.PQRDTO;
+import co.edu.uniquindio.unimarket.dto.PQRGetDTO;
+import co.edu.uniquindio.unimarket.services.interfaces.PQRService;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.util.LinkedCaseInsensitiveMap;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+@SpringBootTest
+@Transactional
 public class PQRServiceTest
 {
     @Autowired
-    private ProductService productService;
+    private PQRService pqrService;
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void createProduct()
+    public void createPQR()
     {
         try {
-            Map<String,String> lstImages = new LinkedCaseInsensitiveMap<>();
-            lstImages.put("1", "https://www.wallpaperbetter.com/es/hd-wallpaper-asswj");
-            List<Categories> lstCategories = new ArrayList<>();
-            lstCategories.add(Categories.Belleza);
-            ProductDTO productDTO = new ProductDTO(
-                    "Producto de prueba",
-                    15000,
-                    "Pertenece el producto a un test",
-                    1,
-                    lstImages,
-                    lstCategories
-            );
+            int idPQR = pqrService.createPQR(new PQRDTO(
+                    "Aqui hay una sugerencia de test",
+                    1
+            ));
 
-            int idProduct = productService.createProduct(productDTO);
+            Assertions.assertNotEquals(0, idPQR);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-            Assertions.assertNotEquals(0, idProduct);
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void getPQR()
+    {
+        try {
+            List<PQRGetDTO> lstPQR = (List<PQRGetDTO>) pqrService.getPQR(3);
 
+            Assertions.assertNotEquals(0, lstPQR.size());
         } catch (Exception ex) {
             ex.printStackTrace();
         }
