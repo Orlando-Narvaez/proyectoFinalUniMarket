@@ -24,7 +24,7 @@ public class FavoriteServiceImpl implements FavoriteService
 
         if (user.getFavorite().contains(product))
         {
-            user.getFavorite().add(product);
+            //user.getFavorite().add(product);
             return true;
         }
 
@@ -40,7 +40,7 @@ public class FavoriteServiceImpl implements FavoriteService
         if (user.getFavorite().contains(product))
         {
             user.getFavorite().remove(product);
-            return userService.createProductFavUser(user);
+            return false;//userService.createProductFavUser(user);
         }
 
         throw new Exception("EL producto con él código "+favoriteDTO+ " no se encuentra en la lista de favoritos");
