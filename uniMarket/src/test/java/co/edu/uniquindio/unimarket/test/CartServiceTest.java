@@ -1,46 +1,52 @@
 package co.edu.uniquindio.unimarket.test;
 
-import co.edu.uniquindio.unimarket.dto.ProductDTO;
-import co.edu.uniquindio.unimarket.model.Categories;
-import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
+import co.edu.uniquindio.unimarket.dto.CartGetDTO;
+import co.edu.uniquindio.unimarket.dto.DetailCartDTO;
+import co.edu.uniquindio.unimarket.services.interfaces.CartService;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
-import org.springframework.util.LinkedCaseInsensitiveMap;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+@SpringBootTest
+@Transactional
 public class CartServiceTest
 {
     @Autowired
-    private ProductService productService;
+    private CartService cartService;
 
     @Test
     @Sql("classpath:dataset.sql")
-    public void createProduct()
+    public void createCart()
+    {
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void getCart()
     {
         try {
-            Map<String,String> lstImages = new LinkedCaseInsensitiveMap<>();
-            lstImages.put("1", "https://www.wallpaperbetter.com/es/hd-wallpaper-asswj");
-            List<Categories> lstCategories = new ArrayList<>();
-            lstCategories.add(Categories.Belleza);
-            ProductDTO productDTO = new ProductDTO(
-                    "Producto de prueba",
-                    15000,
-                    "Pertenece el producto a un test",
-                    1,
-                    lstImages,
-                    lstCategories
-            );
+            CartGetDTO cartGetDTO = cartService.getCart(1);
 
-            int idProduct = productService.createProduct(productDTO);
+            Assertions.assertNotNull(cartGetDTO);
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
-            Assertions.assertNotEquals(0, idProduct);
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void listCartForUser()
+    {
+        try {
+            List<CartGetDTO> lstCart = cartService.listCartForUser(1094978017);
 
-        } catch (Exception ex) {
+            Assertions.assertTrue(lstCart.size() > 0);
+        } catch(Exception ex) {
             ex.printStackTrace();
         }
     }
