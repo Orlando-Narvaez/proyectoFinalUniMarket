@@ -1,4 +1,6 @@
 package co.edu.uniquindio.unimarket.security;
+import co.edu.uniquindio.unimarket.security.config.JwtAuthenticationEntryPoint;
+import co.edu.uniquindio.unimarket.security.config.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
