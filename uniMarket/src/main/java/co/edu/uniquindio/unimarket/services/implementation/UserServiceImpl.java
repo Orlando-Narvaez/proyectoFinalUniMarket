@@ -101,9 +101,11 @@ public class UserServiceImpl implements UserService
                 user.getIdCard(),
                 user.getName(),
                 user.getEmail(),
+                user.getPassword(),
                 user.getAddress(),
                 user.getNumPhone(),
-                new ArrayList<ProductGetDTO>());
+                new ArrayList<>()
+        );
         return userGetDTO;
     }
 }
