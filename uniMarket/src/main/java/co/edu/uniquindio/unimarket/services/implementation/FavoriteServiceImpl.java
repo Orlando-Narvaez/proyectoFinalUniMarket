@@ -25,7 +25,7 @@ public class FavoriteServiceImpl implements FavoriteService
         if (user.getFavorite().contains(product))
         {
             user.getFavorite().add(product);
-            return userService.createProductFavUser(user);
+            return true;
         }
 
         return false;
