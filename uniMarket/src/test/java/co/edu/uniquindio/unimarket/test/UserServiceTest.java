@@ -1,23 +1,19 @@
 package co.edu.uniquindio.unimarket.test;
 
-import co.edu.uniquindio.unimarket.dto.ProductGetDTO;
 import co.edu.uniquindio.unimarket.dto.UserDTO;
 import co.edu.uniquindio.unimarket.dto.UserGetDTO;
-import co.edu.uniquindio.unimarket.model.entidad.State;
-import co.edu.uniquindio.unimarket.model.entidad.User;
 import co.edu.uniquindio.unimarket.services.interfaces.UserService;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.jdbc.Sql;
 import java.util.ArrayList;
 import java.util.List;
 @SpringBootTest
 @Transactional
-public class UserServiceTest
-{
+public class UserServiceTest {
     @Autowired
     private UserService userService;
 
@@ -27,77 +23,72 @@ public class UserServiceTest
     {
         try {
             UserDTO userDTO = new UserDTO(
-                    "723",
-                    "JulianQ",
+                    7231,
+                    "Julian Q",
                     "JulianQ@gmail.com",
                     "1234",
                     "Br montevideo Mz 6 casa 8",
                     "3128190284");
 
-            String idCard = userService.registerUser(userDTO);
+            int idCard = userService.createUser(userDTO);
 
             Assertions.assertNotEquals("", idCard);
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     @Test
     @Sql("classpath:dataset.sql")
-    public void updateUser()
-    {
+    public void updateUser() {
         try {
-            UserGetDTO User = userService.getUser("1094936382");
-            User.setName("JulianQ");
+            UserGetDTO user = userService.getUser(1094936382);
+            user.setName("JulianQ");
 
-            String idCardUpdate = userService.updateUser(User.getIdCard(), new UserDTO(
-                    User.getIdCard(),
-                    User.getName(),
-                    User.getEmail(),
-                    User.getNumPhone(),
-                    User.getUserName(),
-                    User.getPassword(),
-                    ));
+            int idCardUpdate = userService.updateUser(user.getIdCard(), new UserDTO(
+                    user.getIdCard(),
+                    user.getName(),
+                    user.getEmail(),
+                    user.getPassword(),
+                    user.getAddress(),
+                    user.getPhoneNumber()
+            ));
 
-            User = userService.getUser(idCardUpdate);
+            user = userService.getUser(idCardUpdate);
 
-            Assertions.assertNotEquals("Julian Andres Quiroga Ballen", User.getName());
+            Assertions.assertNotEquals("Julian Andres Quiroga Ballen", user.getName());
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
 
-        @Test
-        @Sql("classpath:dataset.sql")
-        public void getUser() {
-        try {
-            UserGetDTO UserGetDTO = userService.getUser("1094936382");
 
-            Assertions.assertEquals("JulianQB", UserGetDTO.getPassword());
-        } catch (Exception exception){
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void getUser()
+    {
+        try {
+            UserGetDTO userGetDTO = userService.getUser(1094936382);
+
+            Assertions.assertEquals("JulianQB", userGetDTO.getPassword());
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
-        @Test
-        @Sql("classpath:dataset.sql")
-        public void obtenerUsuarios() {
-            try {
-                List<UserGetDTO> lstUser = userService.getUser();
+    }
 
-                Assertions.assertNotEquals(0, listUser.size());
-            } catch (Exception exception){
-                exception.printStackTrace();
-            }
-        }
-        @Test
-        @Sql("classpath:dataset.sql")
-        public void changePassword()
+    @Test
+    @Sql("classpath:dataset.sql")
+    public void getUsers ()
+    {
+        try
         {
-            try {
-                boolean answer = userService.changePassword("jaquirogab@uqvirtual.com", "1234");
+            List<UserGetDTO> lstUser = userService.getUsers();
 
-                Assertions.assertTrue(answer);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            Assertions.assertNotEquals(0, lstUser.size());
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
-    }
+}
