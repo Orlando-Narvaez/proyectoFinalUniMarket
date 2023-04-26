@@ -19,8 +19,6 @@ public class GuaranteeGetDTO
 
     private LocalDateTime dataRequest;
 
-    private Map<String, String> images;
-
     private int idProduct;
 
     private int idUser;
