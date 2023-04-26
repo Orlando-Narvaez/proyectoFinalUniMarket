@@ -8,7 +8,5 @@ public interface GuaranteeService
 {
     int createGuarantee(GuaranteeDTO guaranteeDTO) throws Exception;
 
-    List<GuaranteeDTO> listGuarantee(int idGuarantee) throws Exception;
-
-    GuaranteeGetDTO getGuarantee(int idGuarantee) throws Exception;
+    List<GuaranteeGetDTO> listGuarantee(int idGuarantee) throws Exception;
 }
