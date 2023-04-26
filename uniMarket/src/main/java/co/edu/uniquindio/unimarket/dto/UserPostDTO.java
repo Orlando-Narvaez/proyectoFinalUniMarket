@@ -28,35 +28,4 @@ public class UserPostDTO
     @NotBlank
     @Length(max = 12, message = "El teléfono debe tener máximo 12 caracteres")
     private String phoneNumber;
-
-    @Override
-    public int registerUser(UserPostDTO UserDTO) throws Exception
-    {
-        if(!isAvailable(UserDTO.getEmail()))
-        {
-            throw new AttributeException("El correo "+UserDTO.getEmail()+" ya está en uso");
-        }
-        User user = new User();
-        user.setName( UserDTO.getName() );
-        user.setEmail( UserDTO.getEmail() );
-        user.setAddress( UserDTO.getAddress() );
-        user.setPhoneNumber( UserDTO.getPhoneNumber() );
-        user.setPassword( UserDTO.getPassword() );
-        return userRepo.save( user ).getCode();
-    }
-
-    @Override
-    public int updateUser(int code, UserGetDTO UserDTO) throws Exception
-    {
-        Optional<User> register = userRepo.findById(code);
-        if(register.isEmpty()){
-            throw new Exception("El cliente no existe");
-        }
-        User saved = register.get();
-        saved.setName( UserDTO.getName() );
-        saved.setEmail( UserDTO.getEmail() );
-        saved.setAddress( UserDTO.getAddress() );
-        saved.setPhoneNumber( UserDTO.getPhoneNumber() );
-        return convert( userRepo.save(saved) );
-    }
 }
