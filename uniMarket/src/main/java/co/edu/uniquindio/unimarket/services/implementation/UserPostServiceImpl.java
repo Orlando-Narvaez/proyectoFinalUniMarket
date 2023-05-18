@@ -4,7 +4,7 @@ import co.edu.uniquindio.unimarket.dto.UserGetDTO;
 import co.edu.uniquindio.unimarket.dto.UserPostDTO;
 import co.edu.uniquindio.unimarket.model.User;
 import co.edu.uniquindio.unimarket.repository.UserPostRepo;
-import co.edu.uniquindio.unimarket.services.exceptions.AttributeException;
+import co.edu.uniquindio.unimarket.exceptions.AttributeException;
 import co.edu.uniquindio.unimarket.services.interfaces.UserPostService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
