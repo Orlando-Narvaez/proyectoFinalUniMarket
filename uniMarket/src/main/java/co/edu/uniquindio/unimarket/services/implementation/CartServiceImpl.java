@@ -64,6 +64,20 @@ public class CartServiceImpl implements CartService
         return lstCartAnswer;
     }
 
+    @Override
+    public List<CartGetDTO> listCartForState(StateCart stateCart) throws Exception
+    {
+        List<CartGetDTO> lstCartAnswer = new ArrayList<>();
+        List<Cart> lstCart = cartRepo.getLstCartForState(stateCart);
+        if (lstCart != null && lstCart.size() > 0) {
+            lstCart.forEach(compra -> {
+                lstCartAnswer.add(convertCart(compra));
+            });
+        }
+
+        return lstCartAnswer;
+    }
+
     private CartGetDTO convertCart(Cart cart)
     {
         CartGetDTO cartGetDTO = new CartGetDTO(
@@ -71,7 +85,8 @@ public class CartServiceImpl implements CartService
                 cart.getBuyDate(),
                 cart.getUser().getIdUser(),
                 cart.getTotalValue(),
-                cart.getPaymentMethod()
+                cart.getPaymentMethod(),
+                cart.getStateCart()
         );
 
         return cartGetDTO;
