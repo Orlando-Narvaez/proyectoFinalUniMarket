@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/usuario")
 @AllArgsConstructor
-
 public class UserController
 {
     @Autowired
