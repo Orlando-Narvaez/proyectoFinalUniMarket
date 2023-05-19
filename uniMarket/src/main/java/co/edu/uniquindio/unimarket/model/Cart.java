@@ -31,6 +31,10 @@ public class Cart implements Serializable
     @Column(nullable = false)
     private PaymentMethod paymentMethod;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private StateCart stateCart;
+
     @ToString.Exclude
     @ManyToOne
     private User user;
