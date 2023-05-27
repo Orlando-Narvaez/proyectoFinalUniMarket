@@ -2,6 +2,7 @@ package co.edu.uniquindio.unimarket.controllers;
 
 import co.edu.uniquindio.unimarket.dto.MessageDTO;
 import co.edu.uniquindio.unimarket.dto.SessionsDTO;
+import co.edu.uniquindio.unimarket.dto.TokenDTO;
 import co.edu.uniquindio.unimarket.dto.UserDTO;
 import co.edu.uniquindio.unimarket.services.interfaces.SessionService;
 import co.edu.uniquindio.unimarket.services.interfaces.UserService;
@@ -31,11 +32,17 @@ public class LoginController
         ));
     }
 
-    @PostMapping("/registro")
-    public ResponseEntity<MessageDTO> registrarCliente(@Valid @RequestBody UserDTO cliente) throws Exception {
-        userService.createUser(cliente);
+    @PostMapping("/registerUser")
+    public ResponseEntity<MessageDTO> registerUser(@Valid @RequestBody UserDTO user) throws Exception {
+        userService.createUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).body(new MessageDTO(
                 HttpStatus.CREATED,
-                false, "Usuario creado correctamente"));
+                false, "Usuario registrado satisfactoriamente"));
+    }
+
+    @PostMapping("/refresh")
+    public ResponseEntity<MessageDTO> refreshToken(@Valid @RequestBody TokenDTO tokenDTO) throws  Exception{
+        return ResponseEntity.status(HttpStatus.OK).body( new MessageDTO(HttpStatus.OK, false,
+                sessionService.refreshToken(tokenDTO))) ;
     }
 }
