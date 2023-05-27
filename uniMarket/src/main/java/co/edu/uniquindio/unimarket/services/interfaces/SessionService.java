@@ -8,4 +8,6 @@ public interface SessionService
     TokenDTO login(SessionsDTO sessionDTO) throws Exception;
 
     void logout(int UserCode) throws Exception;
+
+    TokenDTO refreshToken(TokenDTO tokenDTO) throws Exception;
 }
