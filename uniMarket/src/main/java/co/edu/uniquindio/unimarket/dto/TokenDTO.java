@@ -16,4 +16,5 @@ public class TokenDTO
     @NotNull(message = "El token no puede ser nulo")
     @NotBlank(message = "El token no puede estar vacío")
     private String token;
+    private String refreshToken;
 }
