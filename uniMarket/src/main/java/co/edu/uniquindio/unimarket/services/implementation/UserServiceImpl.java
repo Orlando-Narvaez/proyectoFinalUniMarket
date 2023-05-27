@@ -18,7 +18,6 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService
 {
     private final UserRepo userRepo;
-    private final ProductService productService;
 
     @Override
     public int createUser(UserDTO userDTO) throws Exception
