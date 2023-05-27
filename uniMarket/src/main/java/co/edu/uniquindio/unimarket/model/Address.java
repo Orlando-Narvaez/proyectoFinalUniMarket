@@ -27,7 +27,7 @@ public class Address implements Serializable
     @ManyToOne
     @ToString.Exclude
     private Moderator moderator;
-    @OneToMany(mappedBy = "Address")
+    @OneToMany(mappedBy = "address")
     @ToString.Exclude
     private List<Cart> cartList;
 }
