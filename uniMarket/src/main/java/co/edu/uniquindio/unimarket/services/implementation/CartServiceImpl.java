@@ -23,7 +23,6 @@ import java.util.Optional;
 public class CartServiceImpl implements CartService
 {
     private final CartRepo cartRepo;
-    private final DetailCartService detailCartService;
     private final UserService userService;
     private final ProductService productService;
     private final EmailService emailService;
