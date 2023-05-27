@@ -46,7 +46,7 @@ public class User extends Person implements Serializable
     private List<Comments> commentsList;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "seller")
     private List<Product> productPublicationList;
 
     @ToString.Exclude
