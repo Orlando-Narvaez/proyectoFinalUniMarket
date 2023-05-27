@@ -42,4 +42,7 @@ public class Cart implements Serializable
     @ToString.Exclude
     @OneToMany(mappedBy = "cart")
     private List<DetailCart> detailCartList;
+    @ManyToOne
+    @ToString.Exclude
+    private Address address;
 }
