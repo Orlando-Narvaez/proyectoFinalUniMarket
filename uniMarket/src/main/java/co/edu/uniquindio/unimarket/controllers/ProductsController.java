@@ -34,7 +34,7 @@ public class ProductsController
                 productService.delateProduct(idProduct)
         ));
     }
-    @PutMapping("/{idProduct}")
+    @PutMapping("/actualizar/{idProduct}")
     public ResponseEntity<MessageDTO> actualizarProducto(@PathVariable int idProduct, @Valid @RequestBody ProductDTO productDTO) throws Exception
     {
         return ResponseEntity.status(HttpStatus.OK).body(new MessageDTO(
@@ -69,7 +69,7 @@ public class ProductsController
                 productService.listProductForCategorie(categorie)
         ));
     }
-    @GetMapping("/{idCard}")
+    @GetMapping("/listarProductosUsuario/{idCard}")
     public ResponseEntity<MessageDTO> listarProductoUsuario(@PathVariable int idCard) throws Exception
     {
         return ResponseEntity.status(HttpStatus.OK).body(new MessageDTO(
@@ -103,6 +103,24 @@ public class ProductsController
                 HttpStatus.OK,
                 false,
                 productService.listProductForNome(nombre)
+        ));
+    }
+
+    @GetMapping("/obtenerProducto/{idProducto}")
+    public ResponseEntity<MessageDTO> obtenerProducto(@PathVariable int idProducto) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(new MessageDTO(
+                HttpStatus.OK,
+                false,
+                productService.getProduct(idProducto)
+        ));
+    }
+
+    @GetMapping("/productosModeador")
+    public ResponseEntity<MessageDTO> productosModeador() {
+        return ResponseEntity.status(HttpStatus.OK).body(new MessageDTO(
+                HttpStatus.OK,
+                false,
+                productService.productosModeador()
         ));
     }
 }

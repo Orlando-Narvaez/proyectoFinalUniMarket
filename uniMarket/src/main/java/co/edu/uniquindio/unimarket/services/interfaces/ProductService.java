@@ -31,4 +31,5 @@ public interface ProductService
 
     List<ProductGetDTO> listProductForNome(String name);
     List<ProductGetDTO> convertLstProduct(List<Product> products);
+    List<ProductGetDTO> productosModeador();
 }

@@ -33,7 +33,7 @@ public class ProductGetDTO
 
     private int sellerCode;
 
-    private Map<String, String> images;
+    private List<ImgDTO> images;
 
     private List<Categories> categories;
 }

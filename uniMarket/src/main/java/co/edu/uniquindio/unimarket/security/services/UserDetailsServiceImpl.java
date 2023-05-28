@@ -24,10 +24,10 @@ public class UserDetailsServiceImpl implements UserDetailsService
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException
     {
         User user = userRepo.findByEmail(email);
-        if(user != null)
+        if(user == null)
         {
             Moderator admin = adminRepo.findByEmail(email);
-            if(admin!= null)
+            if(admin == null)
                 throw new UsernameNotFoundException("El usuario no existe");
             return UserDetailsImpl.build(admin);
         }else

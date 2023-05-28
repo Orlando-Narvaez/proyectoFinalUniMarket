@@ -56,7 +56,7 @@ public class GuaranteeServiceImpl implements GuaranteeService
                 guarantee.getDescribeGuarantee(),
                 guarantee.getDataRequest(),
                 guarantee.getProduct().getIdProduct(),
-                guarantee.getUser().getIdUser()
+                guarantee.getUser().getIdCard()
         );
         return guaranteeGetDTO;
     }

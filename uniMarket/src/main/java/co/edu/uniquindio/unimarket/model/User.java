@@ -13,9 +13,6 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class User extends Person implements Serializable
 {
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    @Column(name = "idUser", nullable = false)
-    private int idUser;
     @Column(name = "creationDate",nullable = false)
     private LocalDateTime creationDate;
 

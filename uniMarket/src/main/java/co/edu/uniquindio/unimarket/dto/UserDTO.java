@@ -8,15 +8,14 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
+import java.time.LocalDate;
+
 @AllArgsConstructor
 @Getter
 @Setter
 
 public class UserDTO
 {
-    @NotNull(message = "La identificacion no puede ser nulo")
-    private int idCard;
-
     @NotBlank(message = "El nombre no puede estar vacío")
     @NotNull(message = "El nombre no puede ser nulo")
     @Length(max = 150, message = "El nombre debe tener máximo 100 caracteres")
@@ -42,4 +41,5 @@ public class UserDTO
     @NotNull(message = "El telefono no puede ser nulo")
     @Length(max = 12, message = "El teléfono debe tener máximo 12 caracteres")
     private String phoneNumber;
+    private LocalDate birthDate;
 }

@@ -32,9 +32,10 @@ public class ProductDTO
 
     @NotNull(message = "El mapa de imágenes no puede ser nulo")
     @Size(min = 1, message = "El producto debe tener al menos una imagen")
-    private Map<String, String> imagenes;
+    private List<ImgDTO> imagenes;
 
     @NotNull(message = "La lista de categorías no puede ser nula")
     @Size(min = 1, message = "El producto debe tener al menos una categoría")
     private List<Categories> categories;
+    private int unidades;
 }

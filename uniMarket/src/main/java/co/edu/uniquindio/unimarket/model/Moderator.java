@@ -14,9 +14,6 @@ import java.util.List;
 @ToString
 public class Moderator extends Person implements Serializable
 {
-    @Column(name = "idMod",nullable = false)
-    private int idMod;
-
     @ToString.Exclude
     @OneToMany(mappedBy = "moderator")
     private List<PQR> pqrList;

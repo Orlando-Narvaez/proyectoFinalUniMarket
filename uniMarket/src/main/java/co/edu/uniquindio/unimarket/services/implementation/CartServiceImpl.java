@@ -82,7 +82,7 @@ public class CartServiceImpl implements CartService
         CartGetDTO cartGetDTO = new CartGetDTO(
                 cart.getIdCart(),
                 cart.getBuyDate(),
-                cart.getUser().getIdUser(),
+                cart.getUser().getIdCard(),
                 cart.getTotalValue(),
                 cart.getPaymentMethod(),
                 cart.getStateCart()

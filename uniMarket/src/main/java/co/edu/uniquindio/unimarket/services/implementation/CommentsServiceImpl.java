@@ -61,7 +61,7 @@ public class CommentsServiceImpl implements CommentsService
                 comments.getDateComment(),
                 comments.getComment(),
                 comments.getProduct().getIdProduct(),
-                comments.getUser().getIdUser());
+                comments.getUser().getIdCard());
         return commentsGetDTO;
     }
 

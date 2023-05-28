@@ -21,6 +21,9 @@ public interface ProductRepo extends JpaRepository<Product,Integer>
     @Query("select p from Product p where p.name like concat('%', :name, '%') AND p.state = 'ACEPTADO' ")
     List<Product> getProductName(String name);
 
-    @Query("select p from Product p where p.seller.idCard = :idCard")
+    @Query("select p from Product p where p.seller.idCard = :idCard and p.state = 0")
     List<Product> getProductUsers(int idCard);
+
+    @Query("SELECT p FROM Product p")
+    List<Product> productosModerador();
 }

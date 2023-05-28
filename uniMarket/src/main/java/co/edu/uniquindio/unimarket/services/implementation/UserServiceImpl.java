@@ -8,7 +8,10 @@ import co.edu.uniquindio.unimarket.repository.UserRepo;
 import co.edu.uniquindio.unimarket.services.interfaces.ProductService;
 import co.edu.uniquindio.unimarket.services.interfaces.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -18,22 +21,20 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService
 {
     private final UserRepo userRepo;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public int createUser(UserDTO userDTO) throws Exception
     {
-        User searchUser = getUserDataBase(userDTO.getIdCard());
         User newUser = new User();
-
-        if (searchUser != null)
-        {
-            newUser.setIdCard(userDTO.getIdCard());
-            newUser.setName(userDTO.getName());
-            newUser.setEmail(userDTO.getEmail());
-            newUser.setPassword(userDTO.getPassword());
-            newUser.setAddress(userDTO.getAddress());
-            newUser.setNumPhone(userDTO.getPhoneNumber());
-        }
+        newUser.setUserName(userDTO.getEmail());
+        newUser.setName(userDTO.getName());
+        newUser.setEmail(userDTO.getEmail());
+        newUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        newUser.setAddress(userDTO.getAddress());
+        newUser.setNumPhone(userDTO.getPhoneNumber());
+        newUser.setCreationDate(LocalDateTime.now());
+        newUser.setBirthDate(userDTO.getBirthDate());
 
         return userRepo.save(newUser).getIdCard();
     }
@@ -42,7 +43,6 @@ public class UserServiceImpl implements UserService
     public int updateUser(int idCard, UserDTO userDTO) throws Exception
     {
         User user = getUserDataBase(idCard);
-        user.setIdCard(userDTO.getIdCard());
         user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         user.setPassword(userDTO.getPassword());
@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService
     private UserGetDTO convertUser(User user)
     {
         UserGetDTO userGetDTO = new UserGetDTO(
-                user.getIdUser(),
+                user.getIdCard(),
                 user.getIdCard(),
                 user.getName(),
                 user.getEmail(),

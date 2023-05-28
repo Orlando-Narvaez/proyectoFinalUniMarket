@@ -9,22 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/images")
+@RequestMapping("api/img")
 @AllArgsConstructor
 public class ImagesController
 {
     private final CloudinaryService cloudinaryService;
     @PostMapping("/upload")
-    public ResponseEntity<MessageDTO> subirImagen(@RequestParam("file") MultipartFile file) throws Exception
+    public ResponseEntity<MessageDTO> subirImagen(@RequestParam("file") List<MultipartFile> lstFiles) throws Exception
     {
-        File imagen = cloudinaryService.convert(file);
-        Map respuesta = cloudinaryService.uploadImage(imagen, "proyecto");
+        List<Map> lstResponse = new ArrayList<>();
+        for (MultipartFile file : lstFiles) {
+            File image = cloudinaryService.convert(file);
+            lstResponse.add(cloudinaryService.uploadImage(image, "proyecto"));
+        }
         return ResponseEntity.status(HttpStatus.OK).body( new MessageDTO(
                 HttpStatus.OK, false,
-                respuesta ) );
+                lstResponse ) );
     }
 
     @DeleteMapping("/{id}")

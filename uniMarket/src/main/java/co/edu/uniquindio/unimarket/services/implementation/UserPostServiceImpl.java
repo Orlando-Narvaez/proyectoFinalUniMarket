@@ -29,7 +29,7 @@ public class UserPostServiceImpl implements UserPostService
         user.setAddress( UserDTO.getAddress() );
         user.setNumPhone(UserDTO.getPhoneNumber());
         user.setPassword( UserDTO.getPassword() );
-        return userPostRepo.save( user ).getIdUser();
+        return userPostRepo.save(user).getIdCard();
     }
 
     @Override

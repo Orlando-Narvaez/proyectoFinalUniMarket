@@ -16,6 +16,7 @@ public class Product implements Serializable
 {
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProduct;
     @Column(name = "name", nullable = false, length = 20)
     private String name;

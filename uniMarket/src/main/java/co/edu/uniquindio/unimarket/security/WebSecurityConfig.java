@@ -26,7 +26,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
         {
             http.csrf().disable();
             http.cors();
-            http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated();
+            http.authorizeHttpRequests().anyRequest().permitAll();
+            //http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll().anyRequest().authenticated();
             http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
             http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             http.authenticationProvider(authenticationProvider);

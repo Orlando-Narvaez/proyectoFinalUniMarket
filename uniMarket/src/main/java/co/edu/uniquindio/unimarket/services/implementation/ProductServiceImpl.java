@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.services.implementation;
 
+import co.edu.uniquindio.unimarket.dto.ImgDTO;
 import co.edu.uniquindio.unimarket.dto.ProductDTO;
 import co.edu.uniquindio.unimarket.dto.ProductGetDTO;
 import co.edu.uniquindio.unimarket.model.Categories;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -26,6 +29,9 @@ public class ProductServiceImpl implements ProductService
     @Override
     public int createProduct(ProductDTO productDTO) throws Exception
     {
+        Map<String, String> imagenes = productDTO.getImagenes().stream().collect(
+                Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
+
         Product newProduct = new Product();
 
         newProduct.setName(productDTO.getName());
@@ -35,7 +41,7 @@ public class ProductServiceImpl implements ProductService
         newProduct.setDescription(productDTO.getDescription());
         newProduct.setState(State.INACTIVO);
         newProduct.setSeller(userService.getUserDataBase(productDTO.getSellerCode()));
-        newProduct.setImages(productDTO.getImagenes());
+        newProduct.setImages(imagenes);
         newProduct.setCategoriesList(productDTO.getCategories());
 
         return productRepo.save(newProduct).getIdProduct();
@@ -59,6 +65,8 @@ public class ProductServiceImpl implements ProductService
     public int updateProduct(int idProduct, ProductDTO productDTO) throws Exception
     {
         Product product = null;
+        Map<String, String> imagenes = productDTO.getImagenes().stream().collect(
+                Collectors.toMap(x -> x.getKey(), x -> x.getValue()));
 
         if (confirmProduct(idProduct))
         {
@@ -68,7 +76,7 @@ public class ProductServiceImpl implements ProductService
             product.setName(productDTO.getName());
             product.setValue(productDTO.getValue());
             product.setDescription(productDTO.getDescription());
-            product.setImages(productDTO.getImagenes());
+            product.setImages(imagenes);
             product.setCategoriesList(productDTO.getCategories());
 
             return productRepo.save(product).getIdProduct();
@@ -207,8 +215,24 @@ public class ProductServiceImpl implements ProductService
         return lstAnswerProducts;
     }
 
+    @Override
+    public List<ProductGetDTO> productosModeador() {
+        List<Product> productos = productRepo.productosModerador();
+        List<ProductGetDTO> productsGETDTO = new ArrayList<>();
+
+        productos.forEach(product -> {
+            productsGETDTO.add(convertProduct(product));
+        });
+
+        return  productsGETDTO;
+    }
+
     private ProductGetDTO convertProduct(Product product)
     {
+        List<ImgDTO> lstImagenes = product.getImages().entrySet().stream().map(x -> {
+            return new ImgDTO(x.getKey(), x.getValue());
+        }).collect(Collectors.toList());
+
         ProductGetDTO productGetDTO = new ProductGetDTO(
                 product.getIdProduct(),
                 product.getName(),
@@ -218,7 +242,7 @@ public class ProductServiceImpl implements ProductService
                 product.getDescription(),
                 product.getState(),
                 product.getSeller().getIdCard(),
-                product.getImages(),
+                lstImagenes,
                 product.getCategoriesList()
         );
 

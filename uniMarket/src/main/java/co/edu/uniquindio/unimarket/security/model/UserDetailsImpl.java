@@ -14,6 +14,7 @@ import java.util.List;
     public class UserDetailsImpl implements UserDetails
     {
         private String username, password;
+        private int code;
         private Collection<? extends GrantedAuthority> authorities;
         public static UserDetailsImpl build(Person user)
         {
@@ -25,7 +26,7 @@ import java.util.List;
             {
                 authorities.add( new SimpleGrantedAuthority("MODERADOR") );
             }
-            return new UserDetailsImpl(user.getEmail(), user.getPassword(), authorities);
+            return new UserDetailsImpl(user.getEmail(), user.getPassword(), user.getIdCard(), authorities);
         }
         @Override
         public Collection<? extends GrantedAuthority> getAuthorities()
@@ -42,6 +43,7 @@ import java.util.List;
         {
             return username;
         }
+        public int getCode() { return code; }
         @Override
         public boolean isAccountNonExpired()
         {
